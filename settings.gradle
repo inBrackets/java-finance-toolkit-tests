@@ -1,0 +1,4 @@
+rootProject.name = "java-finance-toolkit-tests"
+
+include "strata-tests"
+include "ta4j-tests"

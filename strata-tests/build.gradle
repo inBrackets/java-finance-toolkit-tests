@@ -1,0 +1,5 @@
+def strataVersion = '2.12.56'
+
+dependencies {
+    testImplementation "com.opengamma.strata:strata-basics:$strataVersion"
+}

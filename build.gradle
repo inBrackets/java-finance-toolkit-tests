@@ -1,0 +1,71 @@
+wrapper {
+    gradleVersion = '8.10'
+}
+
+subprojects {
+    apply plugin: 'java'
+
+    group = 'com.financetoolkit'
+    version = '1.0-SNAPSHOT'
+
+    def junitVersion = '5.11.3'
+    def allureVersion = '2.29.0'
+    def aspectJVersion = '1.9.22'
+    def slf4jVersion = '2.0.16'
+    def lombokVersion = '1.18.36'
+
+    java {
+        toolchain {
+            languageVersion = JavaLanguageVersion.of(21)
+        }
+    }
+
+    repositories {
+        mavenCentral()
+    }
+
+    tasks.withType(JavaCompile).configureEach {
+        options.encoding = 'UTF-8'
+        options.compilerArgs.add('-parameters')
+    }
+
+    configurations {
+        agent {
+            canBeResolved = true
+            canBeConsumed = true
+        }
+    }
+
+    dependencies {
+        // AspectJ Agent for weaving (required by Allure)
+        agent "org.aspectj:aspectjweaver:$aspectJVersion"
+
+        // SLF4J Simple implementation for logging
+        testImplementation "org.slf4j:slf4j-simple:$slf4jVersion"
+
+        // Lombok
+        compileOnly "org.projectlombok:lombok:$lombokVersion"
+        annotationProcessor "org.projectlombok:lombok:$lombokVersion"
+        testCompileOnly "org.projectlombok:lombok:$lombokVersion"
+        testAnnotationProcessor "org.projectlombok:lombok:$lombokVersion"
+
+        testImplementation 'org.assertj:assertj-core:3.26.3'
+
+        testImplementation platform("org.junit:junit-bom:$junitVersion")
+        testImplementation "org.junit.jupiter:junit-jupiter-params"
+        testImplementation "org.junit.jupiter:junit-jupiter-api"
+        testImplementation "org.junit.jupiter:junit-jupiter-engine"
+
+        testImplementation platform("io.qameta.allure:allure-bom:$allureVersion")
+        testImplementation 'io.qameta.allure:allure-junit5'
+    }
+
+    test {
+        useJUnitPlatform()
+        jvmArgs = [ "-javaagent:${configurations.agent.singleFile}" ]
+        testLogging {
+            events "failed"
+            exceptionFormat "full"
+        }
+    }
+}

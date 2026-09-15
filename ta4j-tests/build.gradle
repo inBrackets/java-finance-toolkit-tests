@@ -1,0 +1,5 @@
+def ta4jVersion = '0.22.1'
+
+dependencies {
+    testImplementation "org.ta4j:ta4j-core:$ta4jVersion"
+}
