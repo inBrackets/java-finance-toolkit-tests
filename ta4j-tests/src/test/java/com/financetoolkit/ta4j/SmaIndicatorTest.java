@@ -2,6 +2,7 @@ package com.financetoolkit.ta4j;
 
 import io.qameta.allure.Description;
 import io.qameta.allure.Feature;
+import io.qameta.allure.Step;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
@@ -30,12 +31,10 @@ class SmaIndicatorTest {
     @ParameterizedTest(name = "Case {index}: closePrices={0}, barCount={1}, expectedSma={2}")
     @MethodSource("generateTestData")
     void testSmaIndicator(double[] closePrices, int barCount, double expectedSma) {
-        BarSeries series = buildSeries(closePrices);
-        SMAIndicator sma = new SMAIndicator(new ClosePriceIndicator(series), barCount);
+        BarSeries series = buildBarSeries(closePrices);
+        double actualSma = computeSma(series, barCount);
 
-        double actualSma = sma.getValue(series.getEndIndex()).doubleValue();
-
-        assertThat(actualSma).isEqualTo(expectedSma);
+        verifySma(actualSma, expectedSma);
     }
 
     static Stream<Arguments> generateTestData() {
@@ -44,6 +43,22 @@ class SmaIndicatorTest {
             Arguments.of(new double[]{10, 20, 30}, 3, 20d),
             Arguments.of(new double[]{2, 4, 6, 8}, 2, 7d)
         );
+    }
+
+    @Step("Build a bar series from close prices {closePrices}")
+    private BarSeries buildBarSeries(double[] closePrices) {
+        return buildSeries(closePrices);
+    }
+
+    @Step("Compute the {barCount}-period SMA at the last bar")
+    private double computeSma(BarSeries series, int barCount) {
+        SMAIndicator sma = new SMAIndicator(new ClosePriceIndicator(series), barCount);
+        return sma.getValue(series.getEndIndex()).doubleValue();
+    }
+
+    @Step("Verify the SMA equals {expectedSma}")
+    private void verifySma(double actualSma, double expectedSma) {
+        assertThat(actualSma).isEqualTo(expectedSma);
     }
 
     private static BarSeries buildSeries(double[] closePrices) {
