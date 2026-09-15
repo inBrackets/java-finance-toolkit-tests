@@ -22,9 +22,11 @@ import static org.assertj.core.api.Assertions.assertThat;
 class SmaIndicatorTest {
 
     @DisplayName("Computes the simple moving average over the last N close prices")
-    @Description("Given a bar series built from a sequence of close prices, the SMA indicator "
-        + "evaluated at the last bar for a given period should equal the arithmetic mean "
-        + "of the last 'barCount' close prices.")
+    @Description("""
+        Given a bar series built from a sequence of close prices, the SMA indicator
+        evaluated at the last bar for a given period should equal the arithmetic mean
+        of the last 'barCount' close prices.
+        """)
     @ParameterizedTest(name = "Case {index}: closePrices={0}, barCount={1}, expectedSma={2}")
     @MethodSource("generateTestData")
     void testSmaIndicator(double[] closePrices, int barCount, double expectedSma) {

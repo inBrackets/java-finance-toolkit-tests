@@ -19,9 +19,11 @@ import static org.assertj.core.api.Assertions.within;
 class CurrencyConversionTest {
 
     @DisplayName("Converts a currency amount into another currency using a given FX rate")
-    @Description("Given an amount in a source currency and a fixed FX rate, "
-        + "converting it to a target currency should return the expected converted amount "
-        + "and the target currency should be reflected in the result.")
+    @Description("""
+        Given an amount in a source currency and a fixed FX rate,
+        converting it to a target currency should return the expected converted amount 
+        and the target currency should be reflected in the result.
+        """)
     @ParameterizedTest(name = "Case {index}: amount={0}, from={1}, to={2}, rate={3}, expected={4}")
     @MethodSource("generateTestData")
     void testConvertedTo(double amount, Currency from, Currency to, double rate, double expected) {
