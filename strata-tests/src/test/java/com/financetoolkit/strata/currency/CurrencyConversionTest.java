@@ -1,4 +1,4 @@
-package com.financetoolkit.strata;
+package com.financetoolkit.strata.currency;
 
 import com.opengamma.strata.basics.currency.Currency;
 import com.opengamma.strata.basics.currency.CurrencyAmount;
