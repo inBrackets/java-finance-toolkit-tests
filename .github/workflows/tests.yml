@@ -2,6 +2,7 @@ name: Run tests
 on:
   push:
   workflow_dispatch:
+
 permissions: write-all
 
 jobs:
@@ -36,23 +37,27 @@ jobs:
           ref: gh-pages
           path: gh-pages
 
-      - name: Build allure report - strata-tests
-        uses: simple-elf/allure-report-action@v1.10
+      - name: Set up Allure CLI
         if: always()
-        with:
-          gh_pages: gh-pages
-          allure_history: allure-history
-          allure_results: strata-tests/build/allure-results
-          subfolder: strata-tests
+        run: npm install -g allure-commandline --save-dev
+
+      - name: Build allure report - strata-tests
+        if: always()
+        run: |
+          mkdir -p strata-tests/build/allure-results/history
+          if [ -d gh-pages/strata-tests/history ]; then
+            cp -r gh-pages/strata-tests/history/. strata-tests/build/allure-results/history/
+          fi
+          allure generate strata-tests/build/allure-results -o allure-history/strata-tests --clean
 
       - name: Build allure report - ta4j-tests
-        uses: simple-elf/allure-report-action@v1.10
         if: always()
-        with:
-          gh_pages: gh-pages
-          allure_history: allure-history
-          allure_results: ta4j-tests/build/allure-results
-          subfolder: ta4j-tests
+        run: |
+          mkdir -p ta4j-tests/build/allure-results/history
+          if [ -d gh-pages/ta4j-tests/history ]; then
+            cp -r gh-pages/ta4j-tests/history/. ta4j-tests/build/allure-results/history/
+          fi
+          allure generate ta4j-tests/build/allure-results -o allure-history/ta4j-tests --clean
 
       - name: Build reports index page
         if: always()
