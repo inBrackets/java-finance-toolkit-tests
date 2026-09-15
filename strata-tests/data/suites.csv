@@ -1,13 +1,89 @@
 "DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
+"Given a BusinessDayConvention (Following, Preceding, ModifiedFollowing) and a holiday calendar,
+adjusting a date that falls on a weekend or holiday should move it to the nearest valid
+business day as defined by that convention's rule.
+","1","Shifts a date onto a valid business day using a business day convention and holiday calendar Case 4: convention=Following, calendar=USNY, date=2024-01-03, expected=2024-01-03","","2026-09-15","passed","2026-09-15","","BusinessDayAdjustment.adjust","com.financetoolkit.strata.dateadjustment.BusinessDayAdjustmentTest","testAdjust"
+"Given a standard HolidayCalendarId (e.g. USNY, GBLO) resolved against the standard reference data,
+isHoliday should correctly classify well-known dates, such as New Year's Day and an
+ordinary midweek business day, as holiday or business day.
+","2","Determines whether a given date is a holiday on a standard holiday calendar Case 2: calendar=USNY, date=2024-01-02, expectedHoliday=false","","2026-09-15","passed","2026-09-15","","HolidayCalendar.isHoliday","com.financetoolkit.strata.holiday.HolidayCalendarTest","testIsHoliday"
+"Given a start date, an end date and a DayCount convention (e.g. Act/360, Act/365F, 30/360 ISDA),
+yearFraction should return the numeric fraction of a year between the two dates
+as defined by that convention's algorithm.
+","2","Converts a date period into a year fraction for a given day count convention Case 3: dayCount=30/360 ISDA, start=2024-01-15, end=2024-07-15, expected=0.5","","2026-09-15","passed","2026-09-15","","DayCount.yearFraction","com.financetoolkit.strata.daycount.DayCountYearFractionTest","testYearFraction"
 "Given an amount in a source currency and a fixed FX rate,
 converting it to a target currency should return the expected converted amount
 and the target currency should be reflected in the result.
-","2","Converts a currency amount into another currency using a given FX rate Case 3: amount=200.0, from=GBP, to=USD, rate=1.25, expected=250.0","","2026-09-15","passed","2026-09-15","","CurrencyAmount.convertedTo","com.financetoolkit.strata.CurrencyConversionTest","testConvertedTo"
+","3","Converts a currency amount into another currency using a given FX rate Case 2: amount=50.0, from=EUR, to=USD, rate=1.1, expected=55.0","","2026-09-15","passed","2026-09-15","","CurrencyAmount.convertedTo","com.financetoolkit.strata.currency.CurrencyConversionTest","testConvertedTo"
+"Given a BusinessDayConvention (Following, Preceding, ModifiedFollowing) and a holiday calendar,
+adjusting a date that falls on a weekend or holiday should move it to the nearest valid
+business day as defined by that convention's rule.
+","2","Shifts a date onto a valid business day using a business day convention and holiday calendar Case 2: convention=Preceding, calendar=GBLO, date=2024-01-07, expected=2024-01-05","","2026-09-15","passed","2026-09-15","","BusinessDayAdjustment.adjust","com.financetoolkit.strata.dateadjustment.BusinessDayAdjustmentTest","testAdjust"
+"Given a base value and one of the four ValueAdjustment types,
+applying the adjustment should return the expected resulting value:
+Replace substitutes the value, DeltaAmount adds a fixed amount,
+DeltaMultiplier adds a percentage of the base value, and Multiplier scales the base value.
+","1","Applies a value adjustment (replace, delta amount, delta multiplier, multiplier) to a base value Case 3: baseValue=100.0, adjustment=ValueAdjustment[result = input * 1.5], expected=150.0","","2026-09-15","passed","2026-09-15","","ValueAdjustment.adjust","com.financetoolkit.strata.value.ValueAdjustmentTest","testAdjust"
+"Given a standard HolidayCalendarId (e.g. USNY, GBLO) resolved against the standard reference data,
+isHoliday should correctly classify well-known dates, such as New Year's Day and an
+ordinary midweek business day, as holiday or business day.
+","4","Determines whether a given date is a holiday on a standard holiday calendar Case 1: calendar=USNY, date=2024-01-01, expectedHoliday=true","","2026-09-15","passed","2026-09-15","","HolidayCalendar.isHoliday","com.financetoolkit.strata.holiday.HolidayCalendarTest","testIsHoliday"
+"Given a standard HolidayCalendarId (e.g. USNY, GBLO) resolved against the standard reference data,
+isHoliday should correctly classify well-known dates, such as New Year's Day and an
+ordinary midweek business day, as holiday or business day.
+","2","Determines whether a given date is a holiday on a standard holiday calendar Case 4: calendar=EUTA, date=2024-03-02, expectedHoliday=true","","2026-09-15","passed","2026-09-15","","HolidayCalendar.isHoliday","com.financetoolkit.strata.holiday.HolidayCalendarTest","testIsHoliday"
+"Given a standard HolidayCalendarId (e.g. USNY, GBLO) resolved against the standard reference data,
+isHoliday should correctly classify well-known dates, such as New Year's Day and an
+ordinary midweek business day, as holiday or business day.
+","2","Determines whether a given date is a holiday on a standard holiday calendar Case 3: calendar=GBLO, date=2024-12-25, expectedHoliday=true","","2026-09-15","passed","2026-09-15","","HolidayCalendar.isHoliday","com.financetoolkit.strata.holiday.HolidayCalendarTest","testIsHoliday"
 "Given an amount in a source currency and a fixed FX rate,
 converting it to a target currency should return the expected converted amount
 and the target currency should be reflected in the result.
-","3","Converts a currency amount into another currency using a given FX rate Case 2: amount=50.0, from=EUR, to=USD, rate=1.1, expected=55.0","","2026-09-15","passed","2026-09-15","","CurrencyAmount.convertedTo","com.financetoolkit.strata.CurrencyConversionTest","testConvertedTo"
+","2","Converts a currency amount into another currency using a given FX rate Case 3: amount=200.0, from=GBP, to=USD, rate=1.25, expected=250.0","","2026-09-15","passed","2026-09-15","","CurrencyAmount.convertedTo","com.financetoolkit.strata.currency.CurrencyConversionTest","testConvertedTo"
+"Given a BusinessDayConvention (Following, Preceding, ModifiedFollowing) and a holiday calendar,
+adjusting a date that falls on a weekend or holiday should move it to the nearest valid
+business day as defined by that convention's rule.
+","3","Shifts a date onto a valid business day using a business day convention and holiday calendar Case 3: convention=ModifiedFollowing, calendar=EUTA, date=2024-03-30, expected=2024-03-28","","2026-09-15","passed","2026-09-15","","BusinessDayAdjustment.adjust","com.financetoolkit.strata.dateadjustment.BusinessDayAdjustmentTest","testAdjust"
+"Given a start date, an end date and a DayCount convention (e.g. Act/360, Act/365F, 30/360 ISDA),
+yearFraction should return the numeric fraction of a year between the two dates
+as defined by that convention's algorithm.
+","6","Converts a date period into a year fraction for a given day count convention Case 1: dayCount=Act/360, start=2023-01-01, end=2023-07-01, expected=0.5027777777777778","","2026-09-15","passed","2026-09-15","","DayCount.yearFraction","com.financetoolkit.strata.daycount.DayCountYearFractionTest","testYearFraction"
+"Given a start date, end date and periodic frequency (with a business day adjustment and,
+where applicable, a stub convention), createSchedule should expand the definition into
+the expected number of schedule periods.
+","5","Builds a periodic schedule and generates the expected number of regular periods Case 3: start=2024-01-01, end=2025-01-01, frequency=P6M, expectedPeriods=2","","2026-09-15","passed","2026-09-15","","PeriodicSchedule.createSchedule","com.financetoolkit.strata.schedule.PeriodicScheduleTest","testCreateSchedule"
+"Given a base value and one of the four ValueAdjustment types,
+applying the adjustment should return the expected resulting value:
+Replace substitutes the value, DeltaAmount adds a fixed amount,
+DeltaMultiplier adds a percentage of the base value, and Multiplier scales the base value.
+","1","Applies a value adjustment (replace, delta amount, delta multiplier, multiplier) to a base value Case 2: baseValue=220.0, adjustment=ValueAdjustment[result = input + input * 0.1], expected=242.0","","2026-09-15","passed","2026-09-15","","ValueAdjustment.adjust","com.financetoolkit.strata.value.ValueAdjustmentTest","testAdjust"
 "Given an amount in a source currency and a fixed FX rate,
 converting it to a target currency should return the expected converted amount
 and the target currency should be reflected in the result.
-","220","Converts a currency amount into another currency using a given FX rate Case 1: amount=100.0, from=USD, to=EUR, rate=0.9, expected=90.0","","2026-09-15","passed","2026-09-15","","CurrencyAmount.convertedTo","com.financetoolkit.strata.CurrencyConversionTest","testConvertedTo"
+","267","Converts a currency amount into another currency using a given FX rate Case 1: amount=100.0, from=USD, to=EUR, rate=0.9, expected=90.0","","2026-09-15","passed","2026-09-15","","CurrencyAmount.convertedTo","com.financetoolkit.strata.currency.CurrencyConversionTest","testConvertedTo"
+"Given a BusinessDayConvention (Following, Preceding, ModifiedFollowing) and a holiday calendar,
+adjusting a date that falls on a weekend or holiday should move it to the nearest valid
+business day as defined by that convention's rule.
+","133","Shifts a date onto a valid business day using a business day convention and holiday calendar Case 1: convention=Following, calendar=USNY, date=2024-01-06, expected=2024-01-08","","2026-09-15","passed","2026-09-15","","BusinessDayAdjustment.adjust","com.financetoolkit.strata.dateadjustment.BusinessDayAdjustmentTest","testAdjust"
+"Given a base value and one of the four ValueAdjustment types,
+applying the adjustment should return the expected resulting value:
+Replace substitutes the value, DeltaAmount adds a fixed amount,
+DeltaMultiplier adds a percentage of the base value, and Multiplier scales the base value.
+","3","Applies a value adjustment (replace, delta amount, delta multiplier, multiplier) to a base value Case 1: baseValue=200.0, adjustment=ValueAdjustment[result = input + 20.0], expected=220.0","","2026-09-15","passed","2026-09-15","","ValueAdjustment.adjust","com.financetoolkit.strata.value.ValueAdjustmentTest","testAdjust"
+"Given a start date, an end date and a DayCount convention (e.g. Act/360, Act/365F, 30/360 ISDA),
+yearFraction should return the numeric fraction of a year between the two dates
+as defined by that convention's algorithm.
+","2","Converts a date period into a year fraction for a given day count convention Case 2: dayCount=Act/365F, start=2024-01-01, end=2025-01-01, expected=1.0027397260273974","","2026-09-15","passed","2026-09-15","","DayCount.yearFraction","com.financetoolkit.strata.daycount.DayCountYearFractionTest","testYearFraction"
+"Given a start date, end date and periodic frequency (with a business day adjustment and,
+where applicable, a stub convention), createSchedule should expand the definition into
+the expected number of schedule periods.
+","3","Builds a periodic schedule and generates the expected number of regular periods Case 2: start=2024-01-01, end=2024-07-01, frequency=P1M, expectedPeriods=6","","2026-09-15","passed","2026-09-15","","PeriodicSchedule.createSchedule","com.financetoolkit.strata.schedule.PeriodicScheduleTest","testCreateSchedule"
+"Given a base value and one of the four ValueAdjustment types,
+applying the adjustment should return the expected resulting value:
+Replace substitutes the value, DeltaAmount adds a fixed amount,
+DeltaMultiplier adds a percentage of the base value, and Multiplier scales the base value.
+","1","Applies a value adjustment (replace, delta amount, delta multiplier, multiplier) to a base value Case 4: baseValue=123.0, adjustment=ValueAdjustment[result = 999.0], expected=999.0","","2026-09-15","passed","2026-09-15","","ValueAdjustment.adjust","com.financetoolkit.strata.value.ValueAdjustmentTest","testAdjust"
+"Given a start date, end date and periodic frequency (with a business day adjustment and,
+where applicable, a stub convention), createSchedule should expand the definition into
+the expected number of schedule periods.
+","41","Builds a periodic schedule and generates the expected number of regular periods Case 1: start=2024-01-01, end=2025-01-01, frequency=P3M, expectedPeriods=4","","2026-09-15","passed","2026-09-15","","PeriodicSchedule.createSchedule","com.financetoolkit.strata.schedule.PeriodicScheduleTest","testCreateSchedule"
