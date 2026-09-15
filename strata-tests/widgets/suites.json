@@ -1,1 +1,1 @@
-{"total":1,"items":[{"uid":"91f055c6031f565ab45a6e0a60e259ef","name":"com.financetoolkit.strata.CurrencyConversionTest","statistic":{"failed":0,"broken":0,"skipped":0,"passed":3,"unknown":0,"total":3}}]}
+{"total":1,"items":[{"uid":"d8d33fb16eec5f99bdb258bd16488466","name":"CurrencyAmount.convertedTo","statistic":{"failed":0,"broken":0,"skipped":0,"passed":3,"unknown":0,"total":3}}]}
