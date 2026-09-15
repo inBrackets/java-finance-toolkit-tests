@@ -2,12 +2,12 @@
 "Given a bar series built from a sequence of close prices, the SMA indicator
 evaluated at the last bar for a given period should equal the arithmetic mean
 of the last 'barCount' close prices.
-","2","Computes the simple moving average over the last N close prices Case 2: closePrices=[10.0, 20.0, 30.0], barCount=3, expectedSma=20.0","","2026-09-15","passed","2026-09-15","","SMAIndicator","com.financetoolkit.ta4j.SmaIndicatorTest","testSmaIndicator"
+","2","Computes the simple moving average over the last N close prices Case 3: closePrices=[2.0, 4.0, 6.0, 8.0], barCount=2, expectedSma=7.0","","2026-09-15","passed","2026-09-15","","SMAIndicator","com.financetoolkit.ta4j.SmaIndicatorTest","testSmaIndicator"
 "Given a bar series built from a sequence of close prices, the SMA indicator
 evaluated at the last bar for a given period should equal the arithmetic mean
 of the last 'barCount' close prices.
-","138","Computes the simple moving average over the last N close prices Case 1: closePrices=[1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0], barCount=5, expectedSma=8.0","","2026-09-15","passed","2026-09-15","","SMAIndicator","com.financetoolkit.ta4j.SmaIndicatorTest","testSmaIndicator"
+","259","Computes the simple moving average over the last N close prices Case 1: closePrices=[1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0], barCount=5, expectedSma=8.0","","2026-09-15","passed","2026-09-15","","SMAIndicator","com.financetoolkit.ta4j.SmaIndicatorTest","testSmaIndicator"
 "Given a bar series built from a sequence of close prices, the SMA indicator
 evaluated at the last bar for a given period should equal the arithmetic mean
 of the last 'barCount' close prices.
-","1","Computes the simple moving average over the last N close prices Case 3: closePrices=[2.0, 4.0, 6.0, 8.0], barCount=2, expectedSma=7.0","","2026-09-15","passed","2026-09-15","","SMAIndicator","com.financetoolkit.ta4j.SmaIndicatorTest","testSmaIndicator"
+","3","Computes the simple moving average over the last N close prices Case 2: closePrices=[10.0, 20.0, 30.0], barCount=3, expectedSma=20.0","","2026-09-15","passed","2026-09-15","","SMAIndicator","com.financetoolkit.ta4j.SmaIndicatorTest","testSmaIndicator"
